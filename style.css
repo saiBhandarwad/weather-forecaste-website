@@ -1,0 +1,565 @@
+/* weather section start*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Nanum+Gothic&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* font-family:"Work Sans",sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+.container{
+    background-image: linear-gradient(rgb(71, 71, 202),black);
+    height:100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0.5rem 10rem;
+}
+
+
+.main{
+    color:white;
+    margin-top: 3rem;
+    
+}
+.main input{
+    height: 3.5rem;
+    width: 30rem;
+    border: none;
+    font-size: 2.5rem;
+}
+input:focus{
+    outline: none;
+}
+ion-icon{
+    font-size: 3rem;
+    cursor: pointer;
+}
+ion-icon:hover{
+    color: #212529;
+}
+
+.celcius, .seperator, .fahrenheit{
+    color: #fff;
+    font-size: 3rem;
+}
+.seperator{
+    margin: 0 .5rem 0 .5rem;
+}
+.celcius:hover, .fahrenheit:hover{
+    color: #212529;
+    cursor: pointer;
+}
+.icons{
+    margin-right: 2rem;
+    margin-left: 1rem;
+}
+.second{
+    margin-top: 2rem ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.second .date,.time{
+    color: #fff;
+    font-size: 2rem;
+}
+.third{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.third .locationname{
+    font-size: 3rem;
+}
+.fourth{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .fourth .weathertypeicon ion-icon{
+    font-size: 5rem;
+    margin-right: 1rem;
+} */
+
+.fourth .temperature{
+    font-size: 4rem;
+}
+.fourth1{
+    /* margin-top: 2rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fourth1 p{
+    font-size: 1.5rem;
+}
+.fifth{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.fifth .weatherdata{
+    font-size: 1.5rem;
+}
+.fifth .weatherdata p{
+    display: flex;
+}
+
+.fifth .weatherdata ion-icon{
+    font-size:2rem;
+    cursor:default;
+}
+
+.sixth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+.sixth span{
+    font-size: 1.5rem;
+}
+.seven{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.seven span{
+    font-size: 1.5rem;
+}
+/* prediction */
+
+.prediction{
+    font-size: 2rem;
+    margin-top: 2rem;
+    font-weight: light;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
+    color: bisque;
+}
+
+.display_center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.predictionText{
+    color: bisque;
+    font-size: 2rem;
+}
+.chanceOfRain{
+    color: bisque;
+    font-size: 2rem;
+}
+.willRain{
+    color: bisque;
+    font-size: 2rem;
+}
+/* hourly section start */
+.hourly{
+    margin-top: 2rem;
+    
+}
+.hourly p{
+    color: bisque;
+    font-weight:light;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 2rem;
+}
+.scroll{
+    display: flex;
+    overflow:auto;
+}
+.scroll::-webkit-scrollbar{
+    display: none;
+}
+.scroll div{
+    margin: 1rem;
+}
+.scroll .inner1{
+    display: flex;
+    /* justify-content: center; */
+    width: 18rem;
+    padding: 0;
+    margin: 0 ;
+    /* color: white; */
+    font-size: 1.5rem;
+
+}
+.scroll .font_size_2{
+    font-size: 2rem;
+}
+.scroll .font_size_3{
+    font-size: 3rem;
+}
+
+
+.p-1{
+    padding: 1rem;
+}
+.border{
+    border-radius: 15px;
+}
+#userLocationData{
+    margin-top: 1rem;
+    color: white;
+}
+
+/* responsiveness
+1em=16px*/
+@media(width>75em){
+
+    html{
+        font-size: 70%;
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        height:100%;
+        padding: 0.5rem 2rem;
+        width: 60vw;
+        margin: auto;
+    }
+
+    .locationdata{
+        width: 50%;
+    }
+    .third .locationname{
+        font-size: 1.5rem;
+    }
+
+    .seperator-sm{
+        font-size: 1rem;
+    }
+
+    .scroll .border .inner1{
+        color: #009df2;
+    }
+
+}
+@media(55em<width<=75em){
+    html{
+        font-size: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        height:100%;
+        padding: 0.5rem .5rem;
+        /* background: #cd1af1; */
+    }
+    .main input{
+        height: 3rem;
+        width: 20rem;
+        border: none;
+        font-size: 1.5rem;
+    }
+    .third .locationname{
+        font-size: 1.5rem;
+    }
+    .fifth{
+        display: block;
+        width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+    }
+    .fifth .weatherdata{
+        margin-bottom: 1rem;
+        border: 2px solid wheat;
+        padding: .5rem .5rem .5rem 5rem;
+    }
+}
+@media(45em<width<=55em){
+    html{
+        font-size: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        height:100%;
+        padding: 0.5rem .5rem;
+        /* background: #a21ddf; */
+    }
+    .main input{
+        height: 3rem;
+        width: 20rem;
+        border: none;
+        font-size: 1.5rem;
+    }
+    .third .locationname{
+        font-size: 1.5rem;
+    }
+    .fifth{
+        display: block;
+        width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+    }
+    .fifth .weatherdata{
+        margin-bottom: 1rem;
+        border: 2px solid wheat;
+        padding: .5rem .5rem .5rem 5rem;
+    }
+}
+@media(35em<width<=45em){
+    html{
+        font-size: 90%;
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        height:100%;
+        padding: 0.5rem .5rem;
+        /* background: #16b1c2; */
+    }
+    .main input{
+        height: 3rem;
+        width: 20rem;
+        border: none;
+        font-size: 1.5rem;
+    }
+    .third .locationname{
+        font-size: 1.2rem;
+    }
+    .fifth{
+        display: block;
+        width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+    }
+    .fifth .weatherdata{
+        margin-bottom: 1rem;
+        border: 2px solid wheat;
+        padding: .5rem .5rem .5rem 4rem;
+    }
+}
+@media(30em<width<=35em){
+    html{
+        font-size: 90%;
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        height:100%;
+        padding: 0.5rem .5rem;
+        /* background: #c21689; */
+    }
+    .main input{
+        height: 3rem;
+        width: 20rem;
+        border: none;
+        font-size: 1.5rem;
+    }
+    .third .locationname{
+        font-size: 1.2rem;
+    }
+    .fifth{
+        display: block;
+        width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+    }
+    .fifth .weatherdata{
+        margin-bottom: 1rem;
+        border: 2px solid wheat;
+        padding: .5rem .5rem .5rem 2rem;
+    }
+}
+@media(25em<width<=30em){
+    html{
+        font-size: 70%;
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        height:100%;
+        padding: 0.5rem .5rem;
+        /* background: #116e30; */
+    }
+    .main input{
+        height: 3rem;
+        width: 20rem;
+        border: none;
+        font-size: 1.5rem;
+    }
+    .third .locationname{
+        font-size: 1.2rem;
+    }
+    .fifth{
+        display: block;
+        width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+    }
+    .fifth .weatherdata{
+        margin-bottom: 1rem;
+        border: 2px solid wheat;
+        padding: .5rem .5rem .5rem 2rem;
+        font-size: 1.5rem;
+    }
+}
+@media(23em<width<=25em){
+    html{
+        font-size: 70%;
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        height:100%;
+        padding: 0.5rem .5rem;
+        /* background:linear-gradient(-335deg,#260ceb, #41b1d0);      */
+    }
+    .main input{
+        height: 3rem;
+        width: 20rem;
+        border: none;
+        font-size: 1.5rem;
+    }
+    .third .locationname{
+        font-size: 1rem;
+    }
+    .fifth{
+        display: block;
+        width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+    }
+    .fifth .weatherdata{
+        margin-bottom: 1rem;
+        border: 2px solid wheat;
+        padding: .5rem .5rem .5rem 2rem;
+    }
+}
+.scroll .border{
+    background: white;
+}
+.scroll .border .inner1{
+    color: black;
+}
+
+@media(20em<width<=23em){
+    html{
+        font-size: 60%;
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        height: 100%;
+        padding: 0.5rem .5rem;
+        /* background:linear-gradient(-335deg,#260ceb, #41b1d0);      */
+}
+    .main input{
+        height: 3rem;
+        width: 20rem;
+        border: none;
+        font-size: 1.5rem;
+    }
+    .third .locationname{
+        font-size: 1rem;
+    }
+    .fifth{
+        display: block;
+        width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+    }
+    .fifth .weatherdata{
+        margin-bottom: 1rem;
+        border: 2px solid wheat;
+        padding: .5rem .5rem .5rem 2rem;
+    }
+}
+.scroll .border{
+    background: white;
+}
+.scroll .border .inner1{
+    color: black;
+}
+
+@media(270px<width<=20em){
+    html{
+        font-size: 50%;
+        padding: 0;
+        margin: 0;
+    }
+    .main ,.upper{
+        width: 100%;
+    }
+    .main input{
+        height: 3.5rem;
+        width: 20rem;
+        border: none;
+        font-size: 2rem;
+    }
+    .container{
+        height: 100%;
+        padding: 0.5rem .5rem;
+        /* background: #e61919; */
+    }
+    .third .locationname{
+        font-size: 1rem;
+    }
+    .fifth{
+        display: block;
+        width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+    }
+    .fifth .weatherdata{
+        margin-bottom: 1rem;
+        border: 2px solid wheat;
+        padding: .5rem 2rem .5rem 2rem;
+    }
+}
+@media(width<=270px){
+    html{
+        font-size: 40%;
+        padding: 0;
+        margin: 0;
+    }
+    .main ,.upper{
+        width: 100%;
+    }
+    .main input{
+        height: 3.5rem;
+        width: 20rem;
+        border: none;
+        font-size: 1.5rem;
+    }
+    .container{
+        height: 100%;
+        padding: 0.5rem .5rem;
+        /* background: #e61919; */
+    }
+    .third .locationname{
+        font-size: 1rem;
+    }
+    .fifth{
+        display: block;
+        width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+    }
+    .fifth .weatherdata{
+        margin-bottom: 1rem;
+        border: 2px solid wheat;
+        padding: .5rem 1rem .5rem 1rem;
+    }
+}
+

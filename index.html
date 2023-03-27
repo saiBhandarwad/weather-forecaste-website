@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <div class="upper display_center">
+                <input type="text" class="search" id="search" placeholder=" Search...">
+                <div class="icons">
+                    <ion-icon name="search-outline" id="submit"></ion-icon>
+                    <ion-icon name="location-outline" id="locationIcon" onclick="getLocation()"></ion-icon>
+                </div>
+            </div>
+            <div class="second">
+                <span class="date" id="localDate">Thu, 24 March 2023</span>
+                <span class="seperator">|</span>
+                <span class="time" id="localTime">Local Time :02:00PM</span>
+            </div>
+
+                
+
+            
+            <div class="fourth">
+                <div class="weathertypeicon" id="conditionIcon">
+                    <ion-icon name="partly-sunny-outline"></ion-icon>
+                </div>
+                <div class="temperature" id="temperature">18&deg;C</div>
+            </div>
+            <div class="condition fourth1">
+                <p id="conditionText">condition sunny</p>
+            </div>
+            <div class="third">
+                <div class="locationname t_one p-1" id="townDistrict">bhisi</div>
+                <span class="locationname p-1" id="cityname">kinwat</span>
+                <span class="locationname p-1" id="province">Nanded</span>
+                <span class="seperator-sm">|</span>
+                <span class="locationname p-1" id="state">Maharashtra</span>
+                <span class="seperator-sm">|</span>
+                <span class="locationname p-1" id="country">India</span>
+                
+            </div>
+            <div class="fifth">
+                <div class="weatherdata">
+                    <p id="humidity"><ion-icon name="water-outline"></ion-icon>humidity</p>
+                    <p id="cloud"><ion-icon name="partly-sunny-outline"></ion-icon>cloud</p>
+                    <p id="feels_like"><ion-icon name="thermometer-outline"></ion-icon>real feel</p>
+                </div>
+                <div class="weatherdata">
+                    <p id="timeZone"></p>
+                    <p id="maxTemp">max temperature</p>
+                    <p id="minTemp">min temperature</p>
+                </div>
+                <div class="weatherdata">
+                    <p id="wind_deg"><ion-icon name="finger-print-outline"></ion-icon>wind degree</p>
+                    <p id="wind_speed"><ion-icon name="finger-print-outline"></ion-icon>wind speed</p>
+                    <p id="wind_dir"><ion-icon name="logo-soundcloud"></ion-icon>wind direction</p>
+                </div>
+            </div>
+            <div class="sixth">
+                <span class="sunrise" id="sunrise">sunrise: 6:00 AM</span>
+                <span class="seperator">|</span>
+
+                <span class="sunset" id="sunset">sunset: 6:30 PM</span>
+            </div>
+            <div class="seven">
+                <span class="sunrise" id="moonrise">moonrise: 8:00 PM</span>
+                <span class="seperator">|</span>
+
+                <span class="sunset" id="moonset">moonset: 6:30 AM</span>
+            </div>
+        </div>
+
+        <div id="userLocationData">location:</div>
+<!-- Today's Weather Forecast -->
+
+
+        <p class="prediction">Today's Weather Forecast</p>
+        <hr>  
+        <div class="display_center">
+            <div id="predictionIcon"></div>
+            <div class="predictionText" id="predictionText"></div>
+        </div> 
+        <div class="display_center chanceOfRain" id="chanceOfRain"></div>     
+        <div class="display_center willRain" id="willRain"></div> 
+        
+        
+<!-- Todays hourly forecast -->
+
+
+        <div class="hourly">
+            <p>Today's Hourly Forecast</p>
+            <hr>
+            <div class="scroll">
+
+                <!--hour_zero -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_zero_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_zero_icon"></span>
+                        <span class="font_size_3" id="hour_zero_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_zero_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_zero">chances Of Rain</div>
+
+                </div>
+                <!-- hour_one -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_one_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_one_icon"></span>
+                        <span class="font_size_3" id="hour_one_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_one_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_one">chances Of Rain</div>
+                </div>
+                <!-- hour_two -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_two_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_two_icon"></span>
+                        <span class="font_size_3" id="hour_two_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_two_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_two">chances Of Rain</div>
+                </div>
+                <!-- hour_three -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_three_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_three_icon"></span>
+                        <span class="font_size_3" id="hour_three_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_three_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_three">chances Of Rain</div>
+                </div>
+                <!-- hour_four -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_four_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_four_icon"></span>
+                        <span class="font_size_3" id="hour_four_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_four_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_four">chances Of Rain</div>
+                </div>
+                <!-- hour_five -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_five_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_five_icon"></span>
+                        <span class="font_size_3" id="hour_five_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_five_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_five">chances Of Rain</div>
+                </div>
+                
+                <!-- hour_six -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_six_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_six_icon"></span>
+                        <span class="font_size_3" id="hour_six_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_six_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_six">chances Of Rain</div>
+                </div>
+                <!-- hour_seven -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_seven_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_seven_icon"></span>
+                        <span class="font_size_3" id="hour_seven_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_seven_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_seven">chances Of Rain</div>
+                </div>
+                <!-- hour_eight -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_eight_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_eight_icon"></span>
+                        <span class="font_size_3" id="hour_eight_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_eight_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_eight">chances Of Rain</div>
+                </div>
+                <!-- hour_nine -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_nine_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_nine_icon"></span>
+                        <span class="font_size_3" id="hour_nine_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_nine_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_nine">chances Of Rain</div>
+                </div>
+                <!-- hour_ten -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_ten_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_ten_icon"></span>
+                        <span class="font_size_3" id="hour_ten_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_ten_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_ten">chances Of Rain</div>
+                </div>
+                <!-- hour_eleven -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_eleven_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_eleven_icon"></span>
+                        <span class="font_size_3" id="hour_eleven_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_eleven_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_eleven">chances Of Rain</div>
+                </div>
+                <!-- hour_twelve -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_twelve_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_twelve_icon"></span>
+                        <span class="font_size_3" id="hour_twelve_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_twelve_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_twelve">chances Of Rain</div>
+                </div>
+                <!-- hour_thirteen -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_thirteen_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_thirteen_icon"></span>
+                        <span class="font_size_3" id="hour_thirteen_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_thirteen_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_thirteen">chances Of Rain</div>
+                </div>
+                <!-- hour_fourteen -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_fourteen_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_fourteen_icon"></span>
+                        <span class="font_size_3" id="hour_fourteen_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_fourteen_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_fourteen">chances Of Rain</div>
+                </div>
+                <!-- hour_fifteen -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_fifteen_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_fifteen_icon"></span>
+                        <span class="font_size_3" id="hour_fifteen_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_fifteen_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_fifteen">chances Of Rain</div>
+                </div>
+                <!-- hour_sixteen -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_sixteen_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_sixteen_icon"></span>
+                        <span class="font_size_3" id="hour_sixteen_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_sixteen_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_sixteen">chances Of Rain</div>
+                </div>
+                <!-- hour_seventeen -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_seventeen_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_seventeen_icon"></span>
+                        <span class="font_size_3" id="hour_seventeen_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_seventeen_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_seventeen">chances Of Rain</div>
+                </div>
+                <!-- hour_eighteen -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_eighteen_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_eighteen_icon"></span>
+                        <span class="font_size_3" id="hour_eighteen_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_eighteen_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_eighteen">chances Of Rain</div>
+                </div>
+                <!-- hour_nineteen -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_nineteen_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_nineteen_icon"></span>
+                        <span class="font_size_3" id="hour_nineteen_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_nineteen_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_nineteen">chances Of Rain</div>
+                </div>
+                <!-- hour_twenty -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_twenty_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_twenty_icon"></span>
+                        <span class="font_size_3" id="hour_twenty_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_twenty_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_twenty">chances Of Rain</div>
+                </div>
+                <!-- hour_twentyone -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_twentyone_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_twentyone_icon"></span>
+                        <span class="font_size_3" id="hour_twentyone_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_twentyone_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_twentyone">chances Of Rain</div>
+                </div>
+                <!-- hour_twentytwo -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_twentytwo_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_twentytwo_icon"></span>
+                        <span class="font_size_3" id="hour_twentytwo_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_twentytwo_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_twentytwo">chances Of Rain</div>
+                </div>
+                <!-- hour_twentythree -->
+                <div class="border p-1">
+                    <div class="inner1 display_center font_size_2" id="hour_twentythree_time">00:00AM</div>
+                    <div class="inner1 display_center">
+                        <span  id="hour_twentythree_icon"></span>
+                        <span class="font_size_3" id="hour_twentythree_temp"></span>
+                    </div>
+                    <div class="inner1" id="hour_twentythree_text">condition</div>
+                    <div class="inner1" id="chancesOfRain_twentythree">chances Of Rain</div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="daily"></div>
+    </div>
+
+
+    <!-- ion-icon javascript -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- java script -->
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
